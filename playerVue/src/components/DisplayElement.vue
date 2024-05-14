@@ -1,16 +1,21 @@
-<script setup></script>
+<script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps(['currentSong', 'isLoading'])
+</script>
 
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center" v-if="!props.isLoading">
     <img
-      src="/gorillaz.jpeg"
+      :key="props.currentSong.id"
+      :src="props.currentSong.cover"
       alt="Gorillaz album cover"
       class="w-[220px] rounded-full border-8 border-solid border-white"
     />
-    <h1 class="text-xl font-normal text-gray-900 mt-5">Gorillaz</h1>
-    <p class="text-sm text-gray-900">Empire Ants</p>
-    <audio src="/Gorillaz - Empire Ants.mp3">
-      <source src="/Gorillaz - Empire Ants.mp3" type="audio/mpeg" />
+    <h1 class="text-xl font-normal text-gray-900 mt-5">{{ props.currentSong.name }}</h1>
+    <p class="text-sm text-gray-900">{{ props.currentSong.title }}</p>
+    <audio :key="props.currentSong.id" :src="props.currentSong.source">
+      <source :src="props.currentSong.source" type="audio/mpeg" />
     </audio>
     <input
       type="range"
@@ -29,6 +34,51 @@
     />
   </div>
 </template>
+
+<!-- <script setup>
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  currentSong: Object,
+  id: String,
+  isLoading: Boolean,
+  title: String,
+  source: String,
+  name: String,
+  cover: String
+})
+</script>
+
+<template>
+  <div class="flex flex-col items-center" v-if="!isLoading">
+    <img
+      :key="props.currentSong.id"
+      :src="props.currentSong.cover"
+      alt="Gorillaz album cover"
+      class="w-[220px] rounded-full border-8 border-solid border-white"
+    />
+    <h1 class="text-xl font-normal text-gray-900 mt-5">{{ props.currentSong.name }}</h1>
+    <p class="text-sm text-gray-900">{{ props.currentSong.title }}</p>
+    <audio :key="props.currentSong.id" :src="props.currentSong.source">
+      <source :src="props.currentSong.source" type="audio/mpeg" />
+    </audio>
+    <input
+      type="range"
+      value="0"
+      id="progress"
+      class="appearance-none w-full h-[6px] bg-[#f53192] rounded-md cursor-pointer mt-[40px] mb-[30px]"
+    />
+    <input
+      type="range"
+      min="0"
+      max="1"
+      step="0.1"
+      value="1"
+      id="volume"
+      class="appearance-none h-1 bg-[#f53192] rounded cursor-pointer mb-1"
+    />
+  </div>
+</template> -->
 
 <style scoped>
 #progress::-webkit-slider-thumb {
