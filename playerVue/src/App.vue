@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+
 import NavBar from './components/NavBar.vue'
 import DisplayElement from './components/DisplayElement.vue'
 import ControlButtons from './components/ControlButtons.vue'
@@ -21,6 +22,10 @@ const getSongData = async () => {
   }
 }
 
+const handlePlay = () => {
+  console.log('Playing song')
+}
+
 getSongData()
 </script>
 
@@ -29,7 +34,7 @@ getSongData()
     <div class="bg-[#ffe0e5] w-2/5 px-6 py-9 text-center rounded-3xl">
       <NavBar />
       <DisplayElement :currentSong="currentSong" :isLoading="isLoading" />
-      <ControlButtons />
+      <ControlButtons @play="handlePlay" />
       <AppFooter />
     </div>
   </div>
