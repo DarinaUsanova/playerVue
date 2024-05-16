@@ -1,8 +1,11 @@
 <script setup>
-import { defineProps } from 'vue'
-
 const emits = defineEmits(['play'])
-const { isPlaying } = defineProps(['isPlaying'])
+
+defineProps({
+  isPlaying: {
+    Type: Boolean
+  }
+})
 
 const handlePlay = () => {
   emits('play')

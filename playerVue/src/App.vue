@@ -5,11 +5,13 @@ import NavBar from './components/NavBar.vue'
 import DisplayElement from './components/DisplayElement.vue'
 import ControlButtons from './components/ControlButtons.vue'
 import AppFooter from './components/AppFooter.vue'
+import DropDownMenu from './components/DropDownMenu.vue'
 
 const songs = ref([])
 const currentSong = ref(null)
 const isLoading = ref(true)
 const isPlaying = ref(false)
+const favoriteIsOpen = ref(false)
 
 const getSongData = async () => {
   try {
@@ -28,13 +30,23 @@ const handlePlay = () => {
   isPlaying.value = !isPlaying.value
 }
 
+const toggleFavoriteMenu = () => {
+  favoriteIsOpen.value = !favoriteIsOpen.value
+}
+
 getSongData()
 </script>
 
 <template>
   <div class="bg-[#9D8189] w-full h-screen flex items-center justify-center flex-wrap">
-    <div class="bg-[#ffe0e5] w-2/5 px-6 py-9 text-center rounded-3xl">
-      <NavBar />
+    <div class="bg-[#ffe0e5] w-2/5 px-6 py-9 text-center rounded-3xl relative">
+      <NavBar @toggleFavoriteMenu="toggleFavoriteMenu" />
+      <DropDownMenu
+        :currentSong="currentSong"
+        :isLoading="isLoading"
+        :songs="songs"
+        v-show="favoriteIsOpen"
+      />
       <DisplayElement :currentSong="currentSong" :isLoading="isLoading" />
       <ControlButtons @play="handlePlay" :isPlaying="isPlaying" />
       <AppFooter />
