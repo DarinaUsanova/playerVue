@@ -10,7 +10,6 @@ const toggleFavorite = () => {
 }
 
 const toggleFavoriteMenu = () => {
-  console.log('Open favorite')
   emits('toggleFavoriteMenu')
 }
 </script>

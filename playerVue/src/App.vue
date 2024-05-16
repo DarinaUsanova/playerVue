@@ -41,15 +41,47 @@ getSongData()
   <div class="bg-[#9D8189] w-full h-screen flex items-center justify-center flex-wrap">
     <div class="bg-[#ffe0e5] w-2/5 px-6 py-9 text-center rounded-3xl relative">
       <NavBar @toggleFavoriteMenu="toggleFavoriteMenu" />
-      <DropDownMenu
-        :currentSong="currentSong"
-        :isLoading="isLoading"
-        :songs="songs"
-        v-show="favoriteIsOpen"
-      />
+      <transition name="showHide">
+        <DropDownMenu
+          :currentSong="currentSong"
+          :isLoading="isLoading"
+          :songs="songs"
+          v-show="favoriteIsOpen"
+        />
+      </transition>
       <DisplayElement :currentSong="currentSong" :isLoading="isLoading" />
       <ControlButtons @play="handlePlay" :isPlaying="isPlaying" />
       <AppFooter />
     </div>
   </div>
 </template>
+
+<style scoped>
+.showHide-enter-active {
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
+}
+.showHide-enter-from {
+  transform: translateX(50%);
+  opacity: 0;
+}
+.showHide-enter-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.showHide-leave-active {
+  transition:
+    transform 0.3s ease-in,
+    opacity 0.3s ease-in;
+}
+.showHide-leave-from {
+  transform: translateX(0);
+  opacity: 1;
+}
+.showHide-leave-to {
+  transform: translateX(-50%);
+  opacity: 0;
+}
+</style>

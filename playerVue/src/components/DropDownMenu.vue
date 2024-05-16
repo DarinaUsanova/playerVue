@@ -29,3 +29,5 @@ defineProps({
     </ul>
   </div>
 </template>
+
+<style scoped></style>
