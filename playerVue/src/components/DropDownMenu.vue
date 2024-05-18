@@ -24,7 +24,7 @@ defineProps({
         :class="{ 'text-[#f53192]': song.id === currentSong.id }"
         class="cursor-pointer"
       >
-        {{ song?.title }} - {{ song?.name }}
+        {{ song.title }} - {{ song.name }}
       </li>
     </ul>
   </div>

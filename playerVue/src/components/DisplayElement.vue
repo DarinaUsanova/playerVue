@@ -1,5 +1,29 @@
 <script setup>
-const props = defineProps(['currentSong', 'isLoading'])
+import { ref, watch } from 'vue'
+
+const props = defineProps(['currentSong', 'isLoading', 'isPlaying'])
+
+const audioRef = ref(null)
+
+watch(
+  () => props.currentSong,
+  () => {
+    if (props.isPlaying.value) {
+      audioRef.value.play()
+    }
+  }
+)
+
+watch(
+  () => props.isPlaying,
+  (newValue) => {
+    if (newValue) {
+      audioRef.value.play()
+    } else {
+      audioRef.value.pause()
+    }
+  }
+)
 </script>
 
 <template>
@@ -12,7 +36,12 @@ const props = defineProps(['currentSong', 'isLoading'])
     />
     <h1 class="text-xl font-normal text-gray-900 mt-5">{{ props.currentSong.name }}</h1>
     <p class="text-sm text-gray-900">{{ props.currentSong.title }}</p>
-    <audio :key="props.currentSong.id" :src="props.currentSong.source">
+    <audio
+      ref="audioRef"
+      :key="props.currentSong.id"
+      :src="props.currentSong.source"
+      preload="auto"
+    >
       <source :src="props.currentSong.source" type="audio/mpeg" />
     </audio>
     <input

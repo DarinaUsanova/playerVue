@@ -13,6 +13,8 @@ const isLoading = ref(true)
 const isPlaying = ref(false)
 const favoriteIsOpen = ref(false)
 
+// const audioRef = ref(null)
+
 const getSongData = async () => {
   try {
     const response = await fetch('http://localhost:5173/songs.json')
@@ -26,7 +28,6 @@ const getSongData = async () => {
 }
 
 const handlePlay = () => {
-  console.log('Playing song')
   isPlaying.value = !isPlaying.value
 }
 
@@ -49,7 +50,7 @@ getSongData()
           v-show="favoriteIsOpen"
         />
       </transition>
-      <DisplayElement :currentSong="currentSong" :isLoading="isLoading" />
+      <DisplayElement :currentSong="currentSong" :isLoading="isLoading" :isPlaying="isPlaying" />
       <ControlButtons @play="handlePlay" :isPlaying="isPlaying" />
       <AppFooter />
     </div>

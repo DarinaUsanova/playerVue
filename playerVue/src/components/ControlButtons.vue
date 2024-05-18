@@ -1,5 +1,5 @@
 <script setup>
-const emits = defineEmits(['play'])
+const emits = defineEmits(['play', 'prev', 'next'])
 
 defineProps({
   isPlaying: {
@@ -10,6 +10,14 @@ defineProps({
 const handlePlay = () => {
   emits('play')
 }
+
+// const playPrev = () => {
+//   emits('prev')
+// }
+
+// const playNext = () => {
+//   emits('next')
+// }
 </script>
 
 <template>
