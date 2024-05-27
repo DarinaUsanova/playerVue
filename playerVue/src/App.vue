@@ -31,6 +31,24 @@ const handlePlay = () => {
   isPlaying.value = !isPlaying.value
 }
 
+const playNext = () => {
+  const index = songs.value.indexOf(currentSong.value)
+  if (index < songs.value.length - 1) {
+    currentSong.value = songs.value[index + 1]
+  } else {
+    currentSong.value = songs.value[0]
+  }
+}
+
+const playPrev = () => {
+  const index = songs.value.indexOf(currentSong.value)
+  if (index > 0) {
+    currentSong.value = songs.value[index - 1]
+  } else {
+    currentSong.value = songs.value[songs.value.length - 1]
+  }
+}
+
 const toggleFavoriteMenu = () => {
   favoriteIsOpen.value = !favoriteIsOpen.value
 }
@@ -51,7 +69,7 @@ getSongData()
         />
       </transition>
       <DisplayElement :currentSong="currentSong" :isLoading="isLoading" :isPlaying="isPlaying" />
-      <ControlButtons @play="handlePlay" :isPlaying="isPlaying" />
+      <ControlButtons @play="handlePlay" @prev="playPrev" @next="playNext" :isPlaying="isPlaying" />
       <AppFooter />
     </div>
   </div>

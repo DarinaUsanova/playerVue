@@ -11,18 +11,18 @@ const handlePlay = () => {
   emits('play')
 }
 
-// const playPrev = () => {
-//   emits('prev')
-// }
+const playPrev = () => {
+  emits('prev')
+}
 
-// const playNext = () => {
-//   emits('next')
-// }
+const playNext = () => {
+  emits('next')
+}
 </script>
 
 <template>
   <div class="flex justify-center items-center">
-    <button class="bg-transparent border-0 cursor-pointer outline-none">
+    <button @click="playPrev" class="bg-transparent border-0 cursor-pointer outline-none">
       <div
         class="w-[60px] h-[60px] m-5 bg-white inline-flex items-center justify-center rounded-full text-[#f53192] cursor-pointer shadow-[0_5px_10px_rgba(255,26,26,0.22)] duration-400 transition-shadow hover:shadow-[0_5px_10px_rgba(255,26,26,0.436)]"
       >
@@ -40,7 +40,7 @@ const handlePlay = () => {
         />
       </div>
     </button>
-    <button class="bg-transparent border-0 cursor-pointer outline-none">
+    <button @click="playNext" class="bg-transparent border-0 cursor-pointer outline-none">
       <div
         class="w-[60px] h-[60px] m-5 bg-white inline-flex items-center justify-center rounded-full text-[#f53192] cursor-pointer shadow-[0_5px_10px_rgba(255,26,26,0.22)] duration-400 transition-shadow hover:shadow-[0_5px_10px_rgba(255,26,26,0.436)]"
       >
