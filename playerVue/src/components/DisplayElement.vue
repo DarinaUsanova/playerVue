@@ -6,15 +6,6 @@ const props = defineProps(['currentSong', 'isLoading', 'isPlaying'])
 const audioRef = ref(null)
 
 watch(
-  () => props.currentSong,
-  () => {
-    if (props.isPlaying.value) {
-      audioRef.value.play()
-    }
-  }
-)
-
-watch(
   () => props.isPlaying,
   (newValue) => {
     if (newValue) {
@@ -31,7 +22,7 @@ watch(
     <img
       :key="props.currentSong.id"
       :src="props.currentSong.cover"
-      alt="Gorillaz album cover"
+      :alt="`${props.currentSong.title} cover`"
       class="w-[220px] rounded-full border-8 border-solid border-white"
     />
     <h1 class="text-xl font-normal text-gray-900 mt-5">{{ props.currentSong.name }}</h1>
@@ -41,8 +32,9 @@ watch(
       :key="props.currentSong.id"
       :src="props.currentSong.source"
       preload="auto"
+      :autoplay="isPlaying"
     >
-      <source :src="props.currentSong.source" type="audio/mpeg" />
+      <!-- <source :src="props.currentSong.source" type="audio/mpeg" /> -->
     </audio>
     <input
       type="range"
