@@ -4,11 +4,31 @@ import { ref, watch } from 'vue'
 const props = defineProps(['currentSong', 'isLoading', 'isPlaying'])
 
 const audioRef = ref(null)
+const currentTime = ref(0)
+const duration = ref(0)
+
+const updateVolume = (event) => {
+  audioRef.value.volume = event.target.value
+}
+
+const updateProgress = () => {
+  currentTime.value = audioRef.value.currentTime
+}
+
+const setDuration = () => {
+  duration.value = audioRef.value.duration
+}
+
+const seekAudio = (event) => {
+  audioRef.value.currentTime = event.target.value
+  currentTime.value = event.target.value
+}
 
 watch(
   () => props.isPlaying,
   (newValue) => {
     if (newValue) {
+      console.log(audioRef.value)
       audioRef.value.play()
     } else {
       audioRef.value.pause()
@@ -33,21 +53,27 @@ watch(
       :src="props.currentSong.source"
       preload="auto"
       :autoplay="isPlaying"
+      @timeupdate="updateProgress"
+      @loadedmetadata="setDuration"
     >
       <!-- <source :src="props.currentSong.source" type="audio/mpeg" /> -->
     </audio>
     <input
+      @input="seekAudio"
       type="range"
-      value="0"
+      :max="duration"
+      step="0.1"
+      :value="currentTime"
       id="progress"
       class="appearance-none w-full h-[6px] bg-[#f53192] rounded-md cursor-pointer mt-[40px] mb-[30px]"
     />
     <input
+      @input="updateVolume"
       type="range"
       min="0"
       max="1"
       step="0.1"
-      value="1"
+      value="0"
       id="volume"
       class="appearance-none h-1 bg-[#f53192] rounded cursor-pointer mb-1"
     />
