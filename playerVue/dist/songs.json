@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "title": "Tame Impala ",
+    "name": "The Less I Know The Better",
+    "source": "/Tame Impala - The Less I Know The Better.mp3",
+    "cover": "/tame-impala.jpeg",
+    "isFavorite": true
+  },
+  {
+    "id": "2",
+    "title": "Gorillaz",
+    "name": "Empire Ants",
+    "source": "/Gorillaz - Empire Ants.mp3",
+    "cover": "/gorillaz.jpeg",
+    "isFavorite": true
+  },
+  {
+    "id": "3",
+    "title": "In Love With A Gost",
+    "name": "Flowers",
+    "source": "/In_Love_With_A_Ghost_-_flowers_feat._nori-2789970382.mp3",
+    "cover": "/InLoveWithAGhost_-flowers.jpg",
+    "isFavorite": true
+  }
+]
