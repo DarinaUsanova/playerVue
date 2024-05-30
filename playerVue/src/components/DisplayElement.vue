@@ -73,7 +73,7 @@ watch(
       min="0"
       max="1"
       step="0.1"
-      value="0"
+      value="0.5"
       id="volume"
       class="appearance-none h-1 bg-[#f53192] rounded cursor-pointer mb-1"
     />

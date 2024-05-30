@@ -57,7 +57,9 @@ getSongData()
 </script>
 
 <template>
-  <div class="bg-[#9D8189] w-full h-screen flex items-center justify-center flex-wrap">
+  <div
+    class="bg-[#9D8189] font-quicksand w-full h-screen flex items-center justify-center flex-wrap"
+  >
     <div class="bg-[#ffe0e5] w-2/5 px-6 py-9 text-center rounded-3xl relative">
       <NavBar @toggleFavoriteMenu="toggleFavoriteMenu" />
       <transition name="showHide">
