@@ -1,35 +1,19 @@
-# playerVue
+# Player Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+## Description 💾
 
-## Recommended IDE Setup
+This is a simple web application that allows the user to browse a list of music tracks and play them. It is developed using modern technologies such as Vue.js Composition API for organizing component logic, Tailwind CSS for styling the interface, and Vite for fast building and development.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features 🚀
 
-## Customize configuration
+- Play selected tracks.
+- Pause and resume playback.
+- Adjust volume.
+- Display album covers and track information.
+- Display drop down list of tracks.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Technologies 🔨
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Vue.js (Composition API)
+- Tailwind Css
+- Vite
