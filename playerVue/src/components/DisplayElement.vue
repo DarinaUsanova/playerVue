@@ -43,7 +43,7 @@ watch(
       :key="props.currentSong.id"
       :src="props.currentSong.cover"
       :alt="`${props.currentSong.title} cover`"
-      class="w-[220px] rounded-full border-8 border-solid border-white"
+      class="w-[220px] h-[220px] rounded-full border-8 border-solid border-white"
     />
     <h1 class="text-xl font-normal text-gray-900 mt-5">{{ props.currentSong.name }}</h1>
     <p class="text-sm text-gray-900">{{ props.currentSong.title }}</p>
