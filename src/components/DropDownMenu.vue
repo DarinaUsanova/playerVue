@@ -1,4 +1,6 @@
 <script setup>
+import { defineEmits, defineProps } from 'vue'
+
 defineProps({
   currentSong: {
     Type: Object
@@ -10,6 +12,12 @@ defineProps({
     Type: Array
   }
 })
+
+const emit = defineEmits(['setCurrentSong'])
+
+const handlClick = (song) => {
+  emit('setCurrentSong', song)
+}
 </script>
 
 <template>
@@ -18,7 +26,7 @@ defineProps({
   >
     <ul class="text-white flex flex-col mt-16 w-4/5">
       <li
-        @click="currentSong.id"
+        @click="handlClick(song)"
         v-for="song in songs"
         :key="song.id"
         :class="{ 'text-[#f53192]': song.id === currentSong.id }"

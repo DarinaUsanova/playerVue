@@ -28,10 +28,21 @@ watch(
   () => props.isPlaying,
   (newValue) => {
     if (newValue) {
-      console.log(audioRef.value)
       audioRef.value.play()
     } else {
       audioRef.value.pause()
+    }
+  }
+)
+
+watch(
+  () => props.currentSong,
+  () => {
+    if (audioRef.value) {
+      audioRef.value.load()
+      if (props.isPlaying) {
+        audioRef.value.play()
+      }
     }
   }
 )
