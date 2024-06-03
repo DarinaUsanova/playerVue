@@ -50,17 +50,6 @@ watch(
     }
   }
 )
-// watch(
-//   () => props.currentSong,
-//   () => {
-//     if (audioRef.value) {
-//       audioRef.value.load()
-//       if (props.isPlaying) {
-//         audioRef.value.play()
-//       }
-//     }
-//   }
-// )
 </script>
 
 <template>
