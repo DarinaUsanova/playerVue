@@ -17,8 +17,8 @@ const favoriteIsOpen = ref(false)
 
 const getSongData = async () => {
   try {
-    const response = await fetch('https://ubiquitous-choux-996792.netlify.app/songs.json')
-    // const response = await fetch('/songs.json')
+    // const response = await fetch('https://ubiquitous-choux-996792.netlify.app/songs.json')
+    const response = await fetch('/songs.json')
     const data = await response.json()
     songs.value = data
     currentSong.value = songs.value[0]

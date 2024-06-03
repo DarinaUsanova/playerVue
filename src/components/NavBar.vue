@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 const isfavorite = ref(false)
 
-const emits = defineEmits(['openFavorite'])
+const emits = defineEmits(['toggleFavoriteMenu'])
 
 const toggleFavorite = () => {
   isfavorite.value = !isfavorite.value

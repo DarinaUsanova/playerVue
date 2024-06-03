@@ -37,15 +37,30 @@ watch(
 
 watch(
   () => props.currentSong,
-  () => {
+  async () => {
     if (audioRef.value) {
       audioRef.value.load()
       if (props.isPlaying) {
-        audioRef.value.play()
+        try {
+          await audioRef.value.play()
+        } catch (error) {
+          console.error('Error playing audio:', error)
+        }
       }
     }
   }
 )
+// watch(
+//   () => props.currentSong,
+//   () => {
+//     if (audioRef.value) {
+//       audioRef.value.load()
+//       if (props.isPlaying) {
+//         audioRef.value.play()
+//       }
+//     }
+//   }
+// )
 </script>
 
 <template>
